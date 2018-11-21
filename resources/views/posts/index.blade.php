@@ -23,20 +23,18 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            @foreach(range(1, 5) as $id)
-            <div class="post-preview">
-                <a href="{{ route('posts.show', $id) }}">
-                    <h2 class="post-title">
-                        Post {{ $id }}
-                    </h2>
-                    <h3 class="post-subtitle">
-                        Subtitle
-                    </h3>
-                </a>
-                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
-            </div>
-            <hr>
-            @endforeach
+            @foreach($posts as $post)
+                <tr>
+                    <td>{{ $post‐>id }}</td>
+                    <td>{{ $post‐>title }}</td>
+                    <td>{{ ($post‐>is_feature)? 'v' : 'x' }}</td>
+                    <td>
+                        <a href="{{ route('admin.posts.edit', $post‐>id) }}">編輯</a>
+                        /
+                        <a href="#">刪除</a>
+                    </td>
+                </tr>
+        @endforeach
             <!-- Pager -->
             <ul class="pager">
                 <li class="next">
