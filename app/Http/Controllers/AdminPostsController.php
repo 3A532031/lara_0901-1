@@ -23,9 +23,9 @@ class AdminPostsController extends Controller
 
     public function edit($id)
     {
-        $data = ['id' => $id];
-
-        return view('admin.posts.edit', $data);
+        $post=Post::find($id);
+        $data=['post'=>$post];
+        returnview('admin.posts.edit',$data);
     }
      public function store(Request$request)
      {
